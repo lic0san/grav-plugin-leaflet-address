@@ -88,34 +88,28 @@ class LeafletAddressPlugin extends Plugin
      */
     public function onAssetsInitialized(Event $e)
     {
+        // The map is only ever rendered on the frontend; the admin coordinate
+        // picker was removed (Grav Admin 2.0 no longer supports legacy
+        // server-rendered custom field types).
+        if ($this->isAdmin()) {
+            return;
+        }
+
         $assets = $this->grav['assets'];
-        $commonCollection = array();
-        $frontendCollection = array();
-        $backendCollection = array();
+        $collection = array();
 
         if ($this->config->get('plugins.' . self::NAME . '.cdn')) {
-            array_push($commonCollection,"//unpkg.com/leaflet@1.4.0/dist/leaflet.css");
-            array_push($commonCollection,"//unpkg.com/leaflet@1.4.0/dist/leaflet.js");
+            array_push($collection, "//unpkg.com/leaflet@1.9.4/dist/leaflet.css");
+            array_push($collection, "//unpkg.com/leaflet@1.9.4/dist/leaflet.js");
         } else {
-            array_push($commonCollection,"plugin://" . self::NAME . "/assets/css/leaflet.css");
-            array_push($commonCollection,"plugin://" . self::NAME . "/assets/js/leaflet.js");
+            array_push($collection, "plugin://" . self::NAME . "/assets/css/leaflet.css");
+            array_push($collection, "plugin://" . self::NAME . "/assets/js/leaflet.js");
         }
-        array_push($commonCollection,"plugin://" . self::NAME . "/assets/js/leaflet-address.frontend.js");
-        array_push($frontendCollection,"plugin://" . self::NAME . "/assets/css/leaflet-address.frontend.css");
-        array_push($backendCollection,"plugin://" . self::NAME . "/assets/css/leaflet-address.backend.css");
-        array_push($backendCollection,"plugin://" . self::NAME . "/assets/js/leaflet-address.backend.js");
+        array_push($collection, "plugin://" . self::NAME . "/assets/js/leaflet-address.frontend.js");
+        array_push($collection, "plugin://" . self::NAME . "/assets/css/leaflet-address.frontend.css");
 
-        $frontendCollection = array_merge($commonCollection, $frontendCollection);
-        $backendCollection = array_merge($commonCollection, $backendCollection);
-
-        $assets->registerCollection(self::NAME . '-frontend', $frontendCollection);
-        $assets->registerCollection(self::NAME . '-backend', $backendCollection);
-
-        if (!$this->isAdmin()) {
-          $assets->add(self::NAME . '-frontend', 99);
-        } else {
-          $assets->add(self::NAME . '-backend', 99);
-        }
+        $assets->registerCollection(self::NAME . '-frontend', $collection);
+        $assets->add(self::NAME . '-frontend', 99);
     }
 
     /**

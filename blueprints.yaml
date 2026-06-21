@@ -127,6 +127,9 @@ form:
         underline: true
         fields:
             leaflet.coordinates:
-              type: coordinateselector
-              label: false
-              display_label: false
+              type: text
+              label: PLUGIN_LEAFLET_ADDRESS.FIELDS.COORDINATES.LABEL
+              help: PLUGIN_LEAFLET_ADDRESS.FIELDS.COORDINATES.HELP
+              placeholder: '41.0819847,14.252262'
+              validate:
+                pattern: '^-?\d{1,2}(\.\d+)?,\s*-?\d{1,3}(\.\d+)?$'

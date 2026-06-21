@@ -47,10 +47,7 @@ en:
             LABEL: Search
         COORDINATES:
             LABEL: Coordinates
-        LATITUDE:
-            LABEL: Latitude
-        LONGITUDE:
-            LABEL: Longitude
+            HELP: "Latitude and longitude separated by a comma, e.g. 41.0819847,14.252262. You can find these on openstreetmap.org by right-clicking the desired location and selecting 'Show address'."
 
 de:
   PLUGIN_LEAFLET_ADDRESS:
@@ -101,10 +98,7 @@ de:
             LABEL: Suche
         COORDINATES:
             LABEL: Koordinaten
-        LATITUDE:
-            LABEL: Längengrad
-        LONGITUDE:
-            LABEL: Breitengrad
+            HELP: "Breitengrad und Längengrad durch Komma getrennt, z. B. 41.0819847,14.252262. Du findest diese auf openstreetmap.org per Rechtsklick auf den gewünschten Ort und 'Adresse anzeigen'."
 
 it:
   PLUGIN_LEAFLET_ADDRESS:
@@ -155,7 +149,4 @@ it:
             LABEL: Ricerca
         COORDINATES:
             LABEL: Coordinate
-        LATITUDE:
-            LABEL: Longitudine
-        LONGITUDE:
-            LABEL: Latitudine
+            HELP: "Latitudine e longitudine separate da una virgola, es. 41.0819847,14.252262. Puoi trovarle su openstreetmap.org cliccando con il tasto destro sul luogo desiderato e selezionando 'Mostra indirizzo'."
