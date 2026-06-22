@@ -1,3 +1,17 @@
+# v2.0.0
+## 06/22/2026
+
+1. [](#refactor)
+    * Initial code refactor for Grav 2.0+
+    * Forked from abandonned repo
+    * Globally remove jQuery dependency
+    * Remove coordinates selector from admin backend (Grav Admin2 would need Vue.js component instead)
+    * Clean up dead code
+    * Upgrade vendor leaflet.js from 1.4.0 to 1.9.4
+
+2. [](#chore)
+    * Upgrade blueprint
+
 # v1.0.6
 ## 05/03/2022
 
